@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import {publickRoutes} from './routes/routes'
 import { Home } from './pages/Home/Home'
 import { Characters } from './pages/Characters/Characters'
@@ -9,72 +9,37 @@ import { NotFound } from './pages/NotFound/NotFound'
 import { CharacterCard } from './pages/CharacterCard/CharacterCard'
 import { LocationCard } from './pages/LocationCard/LocationCard'
 import { EpisodeCard } from './pages/EpisodeCard/EpisodeCard'
-import { Anchor } from 'antd'
+import { Login } from './pages/Login/Login'
+import { AuthProvider } from './context/AuthProvider/AuthProvider'
+import { HeaderLayout } from './layout/HeaderLayout'
+import { PrivateRoute } from './components/PrivateRoute'
 
-function App() {
-
-	const navigate = useNavigate();
-
-	const handleClick = (
-		e: React.MouseEvent<HTMLElement>,
-		link: {
-			title: React.ReactNode;
-			href: string;
-		},
-		) => {
-		e.preventDefault();
-		navigate(link.href);
-	};
-	
+function App() {	
 	return (
 		<>
-			<div style={{ backgroundColor: 'white', position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
-				<Anchor
-					style={{ justifyContent: 'center', gap: '20px', fontSize: '40px', backgroundColor: 'white' }}
-					affix={false}
-					onClick={handleClick}
-					direction="horizontal"
-					items={[
-					{
-						key: 'home',
-						href: publickRoutes.home,
-						title: 'Главная',
-					},
-					{
-						key: 'locations',
-						href: publickRoutes.locations,
-						title: 'Локации',
-					},
-					{
-						key: 'episodes',
-						href: publickRoutes.episodes,
-						title: 'Эпизоды',
-					},
-					{
-						key: 'characters',
-						href: publickRoutes.characters,
-						title: 'Персонажи',
-					}
-					]}
-				/>
-			</div>
-			<Routes>
-				<Route path={publickRoutes.home} element={<Home />} />
-				<Route path={publickRoutes.characters}>
-					<Route index element={<Characters />} />
-					<Route path=":id" element={<CharacterCard />} />
-				</Route>
-				<Route path={publickRoutes.locations}>
-					<Route index element={<Locations />} />
-					<Route path=":id" element={<LocationCard />} />
-				</Route>
-				<Route path={publickRoutes.episodes}>
-					<Route index element={<Episodes />} />
-					<Route path=":id" element={<EpisodeCard />} />
-				</Route>
-				<Route path={publickRoutes.notFound} element={<NotFound />} />
-			</Routes>
+		<AuthProvider>
+				<Routes>
+					<Route element={<HeaderLayout />}>
+						<Route path={publickRoutes.home} element={<Home />} />
+						<Route path={publickRoutes.characters}>
+							<Route index element={<PrivateRoute><Characters /></PrivateRoute>} />
+							<Route path=":id" element={<PrivateRoute><CharacterCard /></PrivateRoute>} />
+						</Route>
+						<Route path={publickRoutes.locations}>
+							<Route index element={<PrivateRoute><Locations /></PrivateRoute>} />
+							<Route path=":id" element={<PrivateRoute><LocationCard /></PrivateRoute>} />
+						</Route>
+						<Route path={publickRoutes.episodes}>
+							<Route index element={<PrivateRoute><Episodes /></PrivateRoute>} />
+							<Route path=":id" element={<PrivateRoute><EpisodeCard /></PrivateRoute>} />
+						</Route>
+						<Route path={publickRoutes.login} element={<Login/>} />
+						<Route path={publickRoutes.notFound} element={<NotFound />} />
+					</Route>
+				</Routes>
+			</AuthProvider>
 		</>
+		
 	)
 }
 
