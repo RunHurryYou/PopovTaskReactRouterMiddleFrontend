@@ -7,6 +7,8 @@ export interface ICharacter {
     gender: string;
     image: string;
     created: string;
+    origin: ILocation;
+    location: ILocation;
 }
 
 export interface ILocation {
@@ -23,4 +25,20 @@ export interface IEpisode {
     air_date: string;
     episode: string;
     created: string;
+}
+
+export interface UseIntersectionObserverProps {
+  threshold?: number;
+  root?: Element | null;
+  rootMargin?: string;
+  onIntersect?: () => void;
+  enabled?: boolean;
+}
+
+export interface UseInfinityScrollProps<T> {
+  fetchData: (page: number) => Promise<T[]>;
+  initialPage?: number;
+  hasMore?: boolean;
+  threshold?: number;
+  enabled?: boolean;
 }

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import episodeData from "../../mocks/episode.json";
-import { publickRoutes } from "../../routes/routes";
+import { publickRoutes } from "../../shared/config/routes.config";
 
 export const EpisodeCard = () => {
     const {id} = useParams()
