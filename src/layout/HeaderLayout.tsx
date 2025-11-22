@@ -1,13 +1,14 @@
 import { Anchor, Spin } from "antd"
 import { Auth } from "../components/Auth"
 import { publickRoutes } from "../routes/routes"
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Suspense } from "react";
 import ErrorBoundary from "../components/ErrorBoundary";
 
 export const HeaderLayout = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
 
 	const handleClick = (
 		e: React.MouseEvent<HTMLElement>,
@@ -53,7 +54,7 @@ export const HeaderLayout = () => {
                     />
                     <Auth/>
             </div>
-            <ErrorBoundary>
+            <ErrorBoundary key={location.pathname}>
                 <Suspense fallback={<Spin size="large" fullscreen/>}>
                     <Outlet/>
                 </Suspense>
