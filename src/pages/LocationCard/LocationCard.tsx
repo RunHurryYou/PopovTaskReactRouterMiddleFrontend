@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import locationData from "../../mocks/location.json";
-import { publickRoutes } from "../../routes/routes";
+import { publickRoutes } from "../../shared/config/routes.config";
 
 export const LocationCard = () => {
     const {id} = useParams()

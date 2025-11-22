@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "../shared/hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 
 export const Auth = () => {

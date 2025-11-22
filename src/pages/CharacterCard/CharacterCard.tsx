@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import characterData from "../../mocks/characters.json";
-import { publickRoutes } from "../../routes/routes";
+import { publickRoutes } from "../../shared/config/routes.config";
 import { Image } from "antd";
 
 export const CharacterCard = () => {

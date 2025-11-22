@@ -1,6 +1,6 @@
 import { Button, Result } from "antd";
 import { Component, type ErrorInfo, type ReactNode } from "react";
-import { publickRoutes } from "../routes/routes";
+import { publickRoutes } from "../shared/config/routes.config";
 
 interface Props {
   children: ReactNode;

@@ -1,6 +1,6 @@
 import { useState, useRef} from 'react';
-import { TextInput } from '../../UI/TextInput/TextInput';
-import { useAuthContext } from '../../hooks/useAuthContext';
+import { TextInput } from '../../shared/UI/TextInput/TextInput';
+import { useAuthContext } from '../../shared/hooks/useAuthContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 

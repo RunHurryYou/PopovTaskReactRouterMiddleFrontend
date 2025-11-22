@@ -1,9 +1,9 @@
 import { Card, Select, Space, Spin, Alert, Button } from 'antd';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
-import type { IEpisode } from '../../types/types';
-import { getEpisodes } from '../../api/enpoints';
-import { useInfinityScroll } from '../../hooks/useInfinityScroll';
+import type { IEpisode } from '../../shared/types/types';
+import { getEpisodes } from '../../shared/api/enpoints';
+import { useInfinityScroll } from '../../shared/hooks/useInfinityScroll';
 
 export const Episodes = () => {
     const [searchParams, setSearchParams] = useSearchParams({ sortOrder: 'asc' });
@@ -13,7 +13,6 @@ export const Episodes = () => {
     const [hasMore, setHasMore] = useState(true);
     const navigate = useNavigate();
     const location = useLocation();
-    let newArray = "";
 
     const fetchEpisodes = useCallback(async (page: number): Promise<IEpisode[]> => {
         if(loading && !hasMore) return [];
@@ -78,7 +77,6 @@ export const Episodes = () => {
 
     return (
         <div style={{ padding: '20px' }}>
-            {newArray.map(character => character.name)}
             <Space style={{ marginBottom: 16 }} direction="vertical">
                 <Space>
                     <span>Сортировка по дате создания:</span>

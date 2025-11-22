@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AuthContext } from "./AuthContext";
-import type { TSignInCallback, TSignOutCallback } from "../../types/context.types";
+import type { TSignInCallback, TSignOutCallback } from "../../shared/types/context.types";
 
 export const AuthProvider = ({ children }: React.PropsWithChildren) => {
     const [user, setUser] = useState<string | null>(localStorage.getItem('user') || null);

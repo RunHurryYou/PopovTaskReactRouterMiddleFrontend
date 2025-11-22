@@ -1,8 +1,8 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-import {publickRoutes} from './routes/routes'
+import {publickRoutes} from './shared/config/routes.config'
 import { AuthProvider } from './context/AuthProvider/AuthProvider'
-import { HeaderLayout } from './layout/HeaderLayout'
+import { HeaderLayout } from './layouts/HeaderLayout'
 import { PrivateRoute } from './components/PrivateRoute'
 import { lazy } from 'react'
 

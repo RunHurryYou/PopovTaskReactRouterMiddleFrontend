@@ -1,6 +1,6 @@
 import { Anchor, Spin } from "antd"
 import { Auth } from "../components/Auth"
-import { publickRoutes } from "../routes/routes"
+import { publickRoutes } from "../shared/config/routes.config"
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Suspense } from "react";
 import ErrorBoundary from "../components/ErrorBoundary";

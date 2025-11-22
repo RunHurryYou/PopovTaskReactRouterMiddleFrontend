@@ -1,9 +1,9 @@
 import { Card, Select, Space, Spin, Alert, Button } from 'antd';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
-import type { ILocation } from '../../types/types';
-import { getLocations } from '../../api/enpoints';
-import { useInfinityScroll } from '../../hooks/useInfinityScroll';
+import type { ILocation } from '../../shared/types/types';
+import { getLocations } from '../../shared/api/enpoints';
+import { useInfinityScroll } from '../../shared/hooks/useInfinityScroll';
 
 export const Locations = () => {
     const [searchParams, setSearchParams] = useSearchParams({ sortOrder: 'asc' });
