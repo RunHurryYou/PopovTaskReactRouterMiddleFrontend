@@ -13,6 +13,7 @@ export const Episodes = () => {
     const [hasMore, setHasMore] = useState(true);
     const navigate = useNavigate();
     const location = useLocation();
+    let newArray = "";
 
     const fetchEpisodes = useCallback(async (page: number): Promise<IEpisode[]> => {
         if(loading && !hasMore) return [];
@@ -77,6 +78,7 @@ export const Episodes = () => {
 
     return (
         <div style={{ padding: '20px' }}>
+            {newArray.map(character => character.name)}
             <Space style={{ marginBottom: 16 }} direction="vertical">
                 <Space>
                     <span>Сортировка по дате создания:</span>

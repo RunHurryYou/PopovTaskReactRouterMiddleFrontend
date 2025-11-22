@@ -1,18 +1,20 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import {publickRoutes} from './routes/routes'
-import { Home } from './pages/Home/Home'
-import { Characters } from './pages/Characters/Characters'
-import { Locations } from './pages/Locations/Locations'
-import { Episodes } from './pages/Episodes/Episodes'
-import { NotFound } from './pages/NotFound/NotFound'
-import { CharacterCard } from './pages/CharacterCard/CharacterCard'
-import { LocationCard } from './pages/LocationCard/LocationCard'
-import { EpisodeCard } from './pages/EpisodeCard/EpisodeCard'
-import { Login } from './pages/Login/Login'
 import { AuthProvider } from './context/AuthProvider/AuthProvider'
 import { HeaderLayout } from './layout/HeaderLayout'
 import { PrivateRoute } from './components/PrivateRoute'
+import { lazy } from 'react'
+
+const Home = lazy(() => import('./pages/Home/Home').then(module => ({ default: module.Home })));
+const Characters = lazy(() => import('./pages/Characters/Characters').then(module => ({ default: module.Characters })));
+const Episodes = lazy(() => import('./pages/Episodes/Episodes').then(module => ({ default: module.Episodes })));
+const Locations = lazy(() => import('./pages/Locations/Locations').then(module => ({ default: module.Locations })));
+const CharacterCard = lazy(() => import('./pages/CharacterCard/CharacterCard').then(module => ({ default: module.CharacterCard })));
+const EpisodeCard = lazy(() => import('./pages/EpisodeCard/EpisodeCard').then(module => ({ default: module.EpisodeCard })));
+const LocationCard = lazy(() => import('./pages/LocationCard/LocationCard').then(module => ({ default: module.LocationCard })));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound').then(module => ({ default: module.NotFound })));
+const Login = lazy(() => import('./pages/Login/Login').then(module => ({ default: module.Login })));
 
 function App() {	
 	return (
@@ -39,7 +41,6 @@ function App() {
 				</Routes>
 			</AuthProvider>
 		</>
-		
 	)
 }
 

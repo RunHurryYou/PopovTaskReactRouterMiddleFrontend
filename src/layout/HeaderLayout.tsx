@@ -1,7 +1,9 @@
-import { Anchor } from "antd"
+import { Anchor, Spin } from "antd"
 import { Auth } from "../components/Auth"
 import { publickRoutes } from "../routes/routes"
 import { Outlet, useNavigate } from "react-router-dom";
+import { Suspense } from "react";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 export const HeaderLayout = () => {
 
@@ -50,8 +52,12 @@ export const HeaderLayout = () => {
                         ]}
                     />
                     <Auth/>
-            </div>	
-            <Outlet/>
+            </div>
+            <ErrorBoundary>
+                <Suspense fallback={<Spin size="large" fullscreen/>}>
+                    <Outlet/>
+                </Suspense>
+            </ErrorBoundary>
         </>
     )
 }
